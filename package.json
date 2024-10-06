@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Учебный проект \"Вычислитель отличий\"",
   "type": "module",
-  "main": "ишт/gendiff.js",
+  "main": "bin/gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --fix"
