@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "Учебный проект \"Вычислитель отличий\"",
   "type": "module",
-  "main": "bin/gendiff.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "test": "npx jest"
   },
   "author": "Abramov A.",
   "license": "ISC",
@@ -18,11 +17,14 @@
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "eslint-plugin-import": "^2.30.0",
     "@eslint/eslintrc": "^3.1.0",
     "@eslint/js": "^9.7.0",
+    "@jest/globals": "^29.7.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-fp": "^2.3.0"
+    "eslint-plugin-fp": "^2.3.0",
+    "eslint-plugin-import": "^2.30.0",
+    "jest": "^29.7.0",
+    "jest-cli": "^29.7.0"
   }
 }
