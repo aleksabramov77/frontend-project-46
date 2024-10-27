@@ -1,18 +1,13 @@
-import path from 'path';
-import fs from 'fs';
 import _ from 'lodash';
+import {parseFile} from "./parsers.js";
 
 const genDiff = (pathToFile1, pathToFile2) => {
-    const file1 = fs.readFileSync(path.resolve(pathToFile1))
-    const file2 = fs.readFileSync(path.resolve(pathToFile2))
-
-    const obj1 = JSON.parse(file1)
-    const obj2 = JSON.parse(file2)
+    const obj1 = parseFile(pathToFile1)
+    const obj2 = parseFile(pathToFile2)
 
     const keysOfObj1 = _(obj1).keys().value()
     const keysOfObj2 = _(obj2).keys().value()
     const allKeys = _.union(keysOfObj1, keysOfObj2)
-
 
     const diffs = allKeys.flatMap((key) => {
         if (obj1[key] === obj2[key]) {
