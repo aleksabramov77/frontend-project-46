@@ -16,3 +16,6 @@ make install
 ```bash
 make test
 ```
+
+## Run genDiff
+[![asciicast](https://asciinema.org/a/TXx6ffTTET7f5IJRCaMQqCC5N.svg)](https://asciinema.org/a/TXx6ffTTET7f5IJRCaMQqCC5N)
