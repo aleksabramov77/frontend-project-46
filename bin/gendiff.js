@@ -3,6 +3,7 @@ import { Command } from 'commander';
 import genDiff from "../src/genDiff.js";
 import formatter from "../src/formatter.js";
 import {parseFile} from "../src/parsers.js";
+import {expectedDiff} from "../__fixtures__/expects.js";
 
 const program = new Command();
 
@@ -17,8 +18,11 @@ program
 
         const obj1 = parseFile(pathToFile1)
         const obj2 = parseFile(pathToFile2)
+
         const diff = genDiff(obj1, obj2)
 
-        console.log(formatter(diff, format))
+        const formattedDiff = formatter(diff, format)
+
+        console.log(formattedDiff)
     })
     .parse(process.argv);
