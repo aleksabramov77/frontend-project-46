@@ -22,7 +22,7 @@ const getFormattedString = (diffs, format) => {
         return getJsonFormattedString(diffs)
     }
 
-    throw new Error(`Unknown format: '${format}'`)
+    return getStylishFormattedString(diffs)
 }
 
 export default getFormattedString
