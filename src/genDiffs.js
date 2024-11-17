@@ -10,7 +10,11 @@ import _ from 'lodash';
 const genDiffs = (obj1, obj2 = obj1) => {
   const keysOfObj1 = _.keys(obj1);
   const keysOfObj2 = _.keys(obj2);
-  const allKeys = _.union(keysOfObj1, keysOfObj2).sort();
+  const allKeys = _([keysOfObj1, keysOfObj2])
+    .flatten()
+    .union()
+    .sortBy()
+    .value();
 
   return allKeys.map((key) => {
     const value1 = obj1[key];

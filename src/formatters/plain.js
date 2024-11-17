@@ -27,13 +27,19 @@ const getPlainFormattedString = (diffs) => {
     const currentKey = keyPrefix ? `${keyPrefix}.${key}` : key;
 
     if (type === 'removed') {
-      acc.push(`Property '${currentKey}' was removed`);
-    } else if (type === 'added') {
-      acc.push(`Property '${currentKey}' was added with value: ${formatValue(value)}`);
-    } else if (type === 'changed') {
-      acc.push(`Property '${currentKey}' was updated. From ${formatValue(prevValue.value)} to ${formatValue(value)}`);
-    } else if (_.isObjectLike(value)) {
-      acc.push(iter(value, currentKey));
+      return [...acc, `Property '${currentKey}' was removed`];
+    }
+
+    if (type === 'added') {
+      return [...acc, `Property '${currentKey}' was added with value: ${formatValue(value)}`];
+    }
+
+    if (type === 'changed') {
+      return [...acc, `Property '${currentKey}' was updated. From ${formatValue(prevValue.value)} to ${formatValue(value)}`];
+    }
+
+    if (_.isObjectLike(value)) {
+      return [...acc, iter(value, currentKey)];
     }
 
     return acc;
