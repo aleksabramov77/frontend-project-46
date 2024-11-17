@@ -8,7 +8,7 @@ program
     .version('1.0.0')
     .description('Compares two configuration files and shows a difference.')
     .helpOption('-h, --help', 'output usage information')
-    .option('-f, --format [type]',  'output format (choices: "stylish", "plain")', 'stylish')
+    .option('-f, --format [type]',  'output format (choices: "stylish", "plain", "json")', 'stylish')
     .arguments('<pathToFile1>, <pathToFile2>')
     .action((pathToFile1, pathToFile2) => {
         const { format } = program.opts()
