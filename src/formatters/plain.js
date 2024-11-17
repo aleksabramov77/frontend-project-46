@@ -11,53 +11,37 @@ const formatValue = (value) => {
 };
 
 /**
- * @type {import("../types.js").Data}
+ * @type {import("../types.js")}
  *
- * @param {Data[]} data
+ * @param {Diff[]} diffs
  * @return {string}
  */
-const getPlainFormattedString = (data) => {
+const getPlainFormattedString = (diffs) => {
     /**
-     * @param {Data[]} data
+     * @param {Diff[]} data
      * @param {string} keyPrefix
      */
     const iter = (data, keyPrefix = "") => {
-
-        return  `${data.reduce((acc, {state, key, value}, index) => {
+        return  `${data.reduce((acc, {state, key, value, prevValue}) => {
             const currentKey = keyPrefix ? `${keyPrefix}.${key}` : key
             
             if(state === "unchanged") {
                 if(_.isObjectLike(value)) {
                      acc.push(iter(value, currentKey))
-
-                    return acc
                 }
-            }
-
-            if(state === "removed") {
+            } else if(state === "removed") {
                 acc.push(`Property '${currentKey}' was removed`)
-
-                return acc
-            }
-
-            if(state === "added") {
+            } else if(state === "added") {
                 acc.push(`Property '${currentKey}' was added with value: ${formatValue(value)}`)
-
-                return acc
+            } else if(state === "changed") {
+                acc.push(`Property '${currentKey}' was updated. From ${formatValue(prevValue.value)} to ${formatValue(value)}` )
             }
-            
-            if(state === "changedRemoved") {
-                const nextValue = data[index + 1]
-
-                acc.push(`Property '${currentKey}' was updated. From ${formatValue(value)} to ${formatValue(nextValue.value)}` )
-            }
-
 
             return acc
         }, []).join('\n')}`
     }
 
-    return iter(data)
+    return iter(diffs)
 }
 
 

@@ -14,7 +14,7 @@ const parseYaml = (pathToFile) => {
     return jsYaml.load(fileData)
 }
 
-export const parseFile = (pathToFile) => {
+const parseFile = (pathToFile) => {
     const ext = path.extname(pathToFile)
 
     if (ext === ".json") {
@@ -28,3 +28,5 @@ export const parseFile = (pathToFile) => {
 
     throw new Error(`Unknown file extension: '${ext}'`)
 }
+
+export default parseFile
