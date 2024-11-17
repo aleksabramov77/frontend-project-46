@@ -7,7 +7,7 @@ import _ from "lodash";
  * @return {string}
  */
 const getStylishFormattedString = (diffs) => {
-    const prefixByState = {
+    const prefixByType = {
         unchanged: '    ',
         added: '  + ',
         removed: '  - ',
@@ -20,14 +20,14 @@ const getStylishFormattedString = (diffs) => {
      * @return {string}
      */
     const iter = (diffs, depth = 0) => {
-        const depthIndent = prefixByState.unchanged.repeat(depth)
+        const depthIndent = prefixByType.unchanged.repeat(depth)
 
-        return  `{\n${diffs.flatMap(({state, key, value, prevValue}) => {
-            const statePrefix = prefixByState[state]
-            const commonPrefix = depthIndent + statePrefix
+        return  `{\n${diffs.flatMap(({type, key, value, prevValue}) => {
+            const typePrefix = prefixByType[type]
+            const commonPrefix = depthIndent + typePrefix
             
-            if(state === "changed") {
-                const commonAddedPrefix = depthIndent + prefixByState.added
+            if(type === "changed") {
+                const commonAddedPrefix = depthIndent + prefixByType.added
 
                 return [
                     `${commonPrefix}${key}: ${_.isArray(prevValue.value) ? iter(prevValue.value, depth + 1) : prevValue.value}`,

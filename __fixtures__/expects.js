@@ -25,98 +25,98 @@ export const expectedObject2 = {
 
 export const expectedDiffs = [
     {
-        state: "unchanged",
+        type: "unchanged",
         key: "common",
         value: [
-            { state: "added", key: "follow", value: false },
-            { state: "unchanged", key: "setting1", value: "Value 1" },
-            { state: "removed", key: "setting2", value: 200 },
+            { type: "added", key: "follow", value: false },
+            { type: "unchanged", key: "setting1", value: "Value 1" },
+            { type: "removed", key: "setting2", value: 200 },
             {
-                state: "changed",
+                type: "changed",
                 key: "setting3",
                 value: null,
-                prevValue: { state: "removed", key: "setting3", value: true },
+                prevValue: { type: "removed", key: "setting3", value: true },
             },
-            { state: "added", key: "setting4", value: "blah blah" },
+            { type: "added", key: "setting4", value: "blah blah" },
             {
-                state: "added",
+                type: "added",
                 key: "setting5",
-                value: [{ state: "unchanged", key: "key5", value: "value5" }],
+                value: [{ type: "unchanged", key: "key5", value: "value5" }],
             },
             {
-                state: "unchanged",
+                type: "unchanged",
                 key: "setting6",
                 value: [
                     {
-                        state: "unchanged",
+                        type: "unchanged",
                         key: "doge",
                         value: [
                             {
-                                state: "changed",
+                                type: "changed",
                                 key: "wow",
                                 value: "so much",
-                                prevValue: { state: "removed", key: "wow", value: "" },
+                                prevValue: { type: "removed", key: "wow", value: "" },
                             },
                         ],
                     },
-                    { state: "unchanged", key: "key", value: "value" },
-                    { state: "added", key: "ops", value: "vops" },
+                    { type: "unchanged", key: "key", value: "value" },
+                    { type: "added", key: "ops", value: "vops" },
                 ],
             },
         ],
     },
     {
-        state: "unchanged",
+        type: "unchanged",
         key: "group1",
         value: [
             {
-                state: "changed",
+                type: "changed",
                 key: "baz",
                 value: "bars",
-                prevValue: { state: "removed", key: "baz", value: "bas" },
+                prevValue: { type: "removed", key: "baz", value: "bas" },
             },
-            { state: "unchanged", key: "foo", value: "bar" },
+            { type: "unchanged", key: "foo", value: "bar" },
             {
-                state: "changed",
+                type: "changed",
                 key: "nest",
                 value: "str",
                 prevValue: {
-                    state: "removed",
+                    type: "removed",
                     key: "nest",
-                    value: [{ state: "unchanged", key: "key", value: "value" }],
+                    value: [{ type: "unchanged", key: "key", value: "value" }],
                 },
             },
         ],
     },
     {
-        state: "removed",
+        type: "removed",
         key: "group2",
         value: [
-            { state: "unchanged", key: "abc", value: 12345 },
-            { state: "unchanged", key: "deep", value: [{ state: "unchanged", key: "id", value: 45 }] },
+            { type: "unchanged", key: "abc", value: 12345 },
+            { type: "unchanged", key: "deep", value: [{ type: "unchanged", key: "id", value: 45 }] },
         ],
     },
     {
-        state: "added",
+        type: "added",
         key: "group3",
         value: [
             {
-                state: "unchanged",
+                type: "unchanged",
                 key: "deep",
                 value: [
                     {
-                        state: "unchanged",
+                        type: "unchanged",
                         key: "id",
-                        value: [{ state: "unchanged", key: "number", value: 45 }],
+                        value: [{ type: "unchanged", key: "number", value: 45 }],
                     },
                 ],
             },
-            { state: "unchanged", key: "fee", value: 100500 },
+            { type: "unchanged", key: "fee", value: 100500 },
         ],
     },
 ];
 
-export const expectedStylishFormat = `{
+export const expectedStylishFormattedString = `{
     common: {
       + follow: false
         setting1: Value 1
@@ -161,7 +161,7 @@ export const expectedStylishFormat = `{
     }
 }`
 
-export const expectedPlainFormat = `Property 'common.follow' was added with value: false
+export const expectedPlainFormattedString = `Property 'common.follow' was added with value: false
 Property 'common.setting2' was removed
 Property 'common.setting3' was updated. From true to null
 Property 'common.setting4' was added with value: 'blah blah'
@@ -172,3 +172,172 @@ Property 'group1.baz' was updated. From 'bas' to 'bars'
 Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`
+
+export const expectedJsonFormattedString = `[
+  {
+    "type": "unchanged",
+    "key": "common",
+    "value": [
+      {
+        "type": "added",
+        "key": "follow",
+        "value": false
+      },
+      {
+        "type": "unchanged",
+        "key": "setting1",
+        "value": "Value 1"
+      },
+      {
+        "type": "removed",
+        "key": "setting2",
+        "value": 200
+      },
+      {
+        "type": "changed",
+        "key": "setting3",
+        "value": null,
+        "prevValue": {
+          "type": "removed",
+          "key": "setting3",
+          "value": true
+        }
+      },
+      {
+        "type": "added",
+        "key": "setting4",
+        "value": "blah blah"
+      },
+      {
+        "type": "added",
+        "key": "setting5",
+        "value": [
+          {
+            "type": "unchanged",
+            "key": "key5",
+            "value": "value5"
+          }
+        ]
+      },
+      {
+        "type": "unchanged",
+        "key": "setting6",
+        "value": [
+          {
+            "type": "unchanged",
+            "key": "doge",
+            "value": [
+              {
+                "type": "changed",
+                "key": "wow",
+                "value": "so much",
+                "prevValue": {
+                  "type": "removed",
+                  "key": "wow",
+                  "value": ""
+                }
+              }
+            ]
+          },
+          {
+            "type": "unchanged",
+            "key": "key",
+            "value": "value"
+          },
+          {
+            "type": "added",
+            "key": "ops",
+            "value": "vops"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "unchanged",
+    "key": "group1",
+    "value": [
+      {
+        "type": "changed",
+        "key": "baz",
+        "value": "bars",
+        "prevValue": {
+          "type": "removed",
+          "key": "baz",
+          "value": "bas"
+        }
+      },
+      {
+        "type": "unchanged",
+        "key": "foo",
+        "value": "bar"
+      },
+      {
+        "type": "changed",
+        "key": "nest",
+        "value": "str",
+        "prevValue": {
+          "type": "removed",
+          "key": "nest",
+          "value": [
+            {
+              "type": "unchanged",
+              "key": "key",
+              "value": "value"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "removed",
+    "key": "group2",
+    "value": [
+      {
+        "type": "unchanged",
+        "key": "abc",
+        "value": 12345
+      },
+      {
+        "type": "unchanged",
+        "key": "deep",
+        "value": [
+          {
+            "type": "unchanged",
+            "key": "id",
+            "value": 45
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "added",
+    "key": "group3",
+    "value": [
+      {
+        "type": "unchanged",
+        "key": "deep",
+        "value": [
+          {
+            "type": "unchanged",
+            "key": "id",
+            "value": [
+              {
+                "type": "unchanged",
+                "key": "number",
+                "value": 45
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "unchanged",
+        "key": "fee",
+        "value": 100500
+      }
+    ]
+  }
+]`

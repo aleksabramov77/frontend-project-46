@@ -22,19 +22,17 @@ const getPlainFormattedString = (diffs) => {
      * @param {string} keyPrefix
      */
     const iter = (data, keyPrefix = "") => {
-        return  `${data.reduce((acc, {state, key, value, prevValue}) => {
+        return  `${data.reduce((acc, {type, key, value, prevValue}) => {
             const currentKey = keyPrefix ? `${keyPrefix}.${key}` : key
             
-            if(state === "unchanged") {
-                if(_.isObjectLike(value)) {
-                     acc.push(iter(value, currentKey))
-                }
-            } else if(state === "removed") {
+            if(type === "removed") {
                 acc.push(`Property '${currentKey}' was removed`)
-            } else if(state === "added") {
+            } else if(type === "added") {
                 acc.push(`Property '${currentKey}' was added with value: ${formatValue(value)}`)
-            } else if(state === "changed") {
+            } else if(type === "changed") {
                 acc.push(`Property '${currentKey}' was updated. From ${formatValue(prevValue.value)} to ${formatValue(value)}` )
+            } else if(_.isObjectLike(value)) {
+                 acc.push(iter(value, currentKey))
             }
 
             return acc

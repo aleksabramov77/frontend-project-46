@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import genDiffs from "../src/genDiffs.js";
-import {parseFile} from "../src/parsers.js";
+import parseFile from "../src/parsers.js";
 import getFormattedString from "../src/formatters/index.js";
 
 const program = new Command();
