@@ -17,5 +17,11 @@ make install
 make test
 ```
 
-## Run genDiff
+## Run genDiff --format stylish
 [![asciicast](https://asciinema.org/a/TXx6ffTTET7f5IJRCaMQqCC5N.svg)](https://asciinema.org/a/TXx6ffTTET7f5IJRCaMQqCC5N)
+
+## Run genDiff --format plain
+[![asciicast](https://asciinema.org/a/ysS0VMZVw0y4DGtqZEDpsQeDs.svg)](https://asciinema.org/a/ysS0VMZVw0y4DGtqZEDpsQeDs)
+
+## Run genDiff --format plain
+[![asciicast](https://asciinema.org/a/VA9dFqTkLsmg3enCsJ0MEPf9S.svg)](https://asciinema.org/a/VA9dFqTkLsmg3enCsJ0MEPf9S)

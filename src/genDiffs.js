@@ -19,14 +19,14 @@ const genDiffs = (obj1, obj2 = obj1) => {
         const getValue = (value1, value2) => _.isObject(value1) ? genDiffs(value1, value2) : value1
 
         if(value1 === value2 || (_.isObject(value1) && _.isObject(value2))) {
-            return {state: "unchanged", key, value: getValue(value1, value2)}
+            return {type: "unchanged", key, value: getValue(value1, value2)}
         }
 
-        const removedData = value1 !== undefined && {state: "removed", key, value: getValue(value1)}
-        const addedData = value2 !== undefined && {state: "added", key, value: getValue(value2)}
+        const removedData = value1 !== undefined && {type: "removed", key, value: getValue(value1)}
+        const addedData = value2 !== undefined && {type: "added", key, value: getValue(value2)}
 
         if(removedData && addedData) {
-            return { ...addedData, state: "changed", prevValue: removedData}
+            return { ...addedData, type: "changed", prevValue: removedData}
         }
 
         return  removedData || addedData

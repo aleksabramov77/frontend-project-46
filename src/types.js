@@ -2,9 +2,9 @@
  * @typedef {"changed" | "unchanged" | "removed" | "added"} DiffType
  *
  * @typedef {{
- *      state: DiffType,
+ *      type: DiffType,
  *      key: string,
- *      prevValue:  string | boolean | number | null | undefined
+ *      prevValue: string | boolean | number | null | Data[]
  *      value: string | boolean | number | null | Data[]
  * }} Diff
  */
