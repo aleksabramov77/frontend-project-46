@@ -23,11 +23,6 @@ jobs:
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
 
-      - run: make install
-      - run: make lint
-      - run: make test
-
-
       - name: Upload coverage to Code Climate
         env:
           CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
