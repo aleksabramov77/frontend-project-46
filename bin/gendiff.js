@@ -13,6 +13,6 @@ program
     .action((pathToFile1, pathToFile2) => {
         const { format } = program.opts()
 
-        printFormattedDiff(pathToFile1, pathToFile2, format)
+        console.log(printFormattedDiff(pathToFile1, pathToFile2, format))
     })
     .parse(process.argv);

@@ -11,8 +11,8 @@ export const printFormattedDiff = (pathToFile1, pathToFile2, format) => {
 
     const formattedDiff = getFormattedString(diff, format)
 
-    console.log(">>>>>", pathToFile1, pathToFile2, format, pathToFile1, pathToFile2, diff, formattedDiff)
-    console.log(formattedDiff)
+    console.log(">>>>>", {pathToFile1, pathToFile2, format, obj1, obj2, diff, formattedDiff})
+    return formattedDiff
 }
 
 export default printFormattedDiff
