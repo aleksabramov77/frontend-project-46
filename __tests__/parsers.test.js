@@ -18,4 +18,10 @@ describe('parseFile', () => {
     expect(object1).toEqual(expectedObject1);
     expect(object2).toEqual(expectedObject2);
   });
+
+  test('Unknown file extension', () => {
+    const pathToFile1 = path.resolve(__dirname, '..', '__fixtures__', 'file1.txt');
+
+    expect(parseFile(pathToFile1)).rejects.toThrow();
+  });
 });
