@@ -12,6 +12,7 @@ describe('formatter', () => {
     ['stylish', expectedStylishFormattedString],
     ['plain', expectedPlainFormattedString],
     ['json', expectedJsonFormattedString],
+    ['undefined', expectedStylishFormattedString],
   ])('%s', (format, expected) => {
     const formattedDiff = getFormattedString(expectedDiffs, format);
 
