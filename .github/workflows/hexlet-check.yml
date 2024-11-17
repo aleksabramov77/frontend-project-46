@@ -23,8 +23,10 @@ jobs:
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
 
-      - name: Code Climate Test Reporter
-        uses: aktions/codeclimate-test-reporter@v1
+      - name: Test & publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
         with:
-          codeclimate-test-reporter-id: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
-          command: after-build
+          coverageCommand: make test-coverage
+          debug: true
