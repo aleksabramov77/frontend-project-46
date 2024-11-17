@@ -22,7 +22,7 @@ const parseFile = (pathToFile) => {
     }
 
 
-    if (ext === ".yaml") {
+    if (ext === ".yaml" || ext === ".yml") {
         return parseYaml(pathToFile)
     }
 

@@ -1,5 +1,3 @@
-import _ from "lodash";
-
 /**
  * @type {import("../types.js")}
  *
@@ -9,6 +7,5 @@ import _ from "lodash";
 const getJsonFormattedString = (diffs) => {
     return JSON.stringify(diffs, null, 2)
 }
-
 
 export default getJsonFormattedString
