@@ -22,3 +22,11 @@ jobs:
         uses: hexlet/project-action@release
         with:
           hexlet-id: ${{ secrets.HEXLET_ID }}
+
+      - name: Upload coverage to Code Climate
+        env:
+          CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
+        run: |
+          npx @codeclimate/test-reporter < coverage/lcov.info
+    
+
