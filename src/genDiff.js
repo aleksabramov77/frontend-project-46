@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
 /**
- * @type {import("./formatter.js").Data}
+ * @type {import("./types.js").Data}
  * @param {Object} obj1
  * @param {Object} obj2
- * @return {Data}
+ * @return {Data[]}
  */
 const genDiff = (obj1, obj2 = obj1) => {
     const keysOfObj1 = _(obj1).keys().value()
@@ -21,10 +21,17 @@ const genDiff = (obj1, obj2 = obj1) => {
             return [{state: "unchanged", key, value: getValue(value1, value2)}]
         }
 
-        return [
-            value1 !== undefined && {state: "removed", key, value: getValue(value1)},
-            value2 !== undefined && {state: "added", key, value: getValue(value2)}
-        ].filter(Boolean)
+        const removedData = value1 !== undefined && {state: "removed", key, value: getValue(value1)}
+        const addedData = value2 !== undefined && {state: "added", key, value: getValue(value2)}
+
+        if(removedData && addedData) {
+            return [
+                { ...removedData, state: `changedRemoved`},
+                { ...addedData, state: `changedAdded`},
+            ]
+        }
+
+        return [ removedData || addedData ]
     })
 }
 
