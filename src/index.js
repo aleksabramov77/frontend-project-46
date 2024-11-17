@@ -9,10 +9,7 @@ export const printFormattedDiff = (pathToFile1, pathToFile2, format) => {
 
     const diff = genDiffs(obj1, obj2)
 
-    const formattedDiff = getFormattedString(diff, format)
-
-    console.log(">>>>>", {pathToFile1, pathToFile2, format, obj1, obj2, diff, formattedDiff})
-    return formattedDiff
+    return  getFormattedString(diff, format)
 }
 
 export default printFormattedDiff
