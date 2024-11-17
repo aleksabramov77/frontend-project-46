@@ -4,8 +4,6 @@
  * @param {Diff[]} diffs
  * @return {string}
  */
-const getJsonFormattedString = (diffs) => {
-    return JSON.stringify(diffs, null, 2)
-}
+const getJsonFormattedString = (diffs) => JSON.stringify(diffs, null, 2);
 
-export default getJsonFormattedString
+export default getJsonFormattedString;

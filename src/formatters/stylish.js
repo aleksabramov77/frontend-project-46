@@ -1,4 +1,4 @@
-import _ from "lodash";
+import _ from 'lodash';
 
 /**
  * @type {import("../types.js")}
@@ -7,39 +7,41 @@ import _ from "lodash";
  * @return {string}
  */
 const getStylishFormattedString = (diffs) => {
-    const prefixByType = {
-        unchanged: '    ',
-        added: '  + ',
-        removed: '  - ',
-        changed: '  - ',
-    }
+  const prefixByType = {
+    unchanged: '    ',
+    added: '  + ',
+    removed: '  - ',
+    changed: '  - ',
+  };
 
-    /**
-     * @param {Diff[]} diffs
+  /**
+     * @param {Diff[]} currDiffs
      * @param {number} depth
      * @return {string}
      */
-    const iter = (diffs, depth = 0) => {
-        const depthIndent = prefixByType.unchanged.repeat(depth)
+  const iter = (currDiffs, depth = 0) => {
+    const depthIndent = prefixByType.unchanged.repeat(depth);
 
-        return  `{\n${diffs.flatMap(({type, key, value, prevValue}) => {
-            const typePrefix = prefixByType[type]
-            const commonPrefix = depthIndent + typePrefix
-            
-            if(type === "changed") {
-                const commonAddedPrefix = depthIndent + prefixByType.added
+    return `{\n${currDiffs.flatMap(({
+      type, key, value, prevValue,
+    }) => {
+      const typePrefix = prefixByType[type];
+      const commonPrefix = depthIndent + typePrefix;
 
-                return [
-                    `${commonPrefix}${key}: ${_.isArray(prevValue.value) ? iter(prevValue.value, depth + 1) : prevValue.value}`,
-                    `${commonAddedPrefix}${key}: ${_.isArray(value) ? iter(value, depth + 1) : value}`
-                ]
-            }
-            
-            return `${commonPrefix}${key}: ${_.isArray(value) ? iter(value, depth + 1) : value}`
-        }).join('\n')}\n${depthIndent}}`
-    }
+      if (type === 'changed') {
+        const commonAddedPrefix = depthIndent + prefixByType.added;
 
-   return iter(diffs)
+        return [
+          `${commonPrefix}${key}: ${_.isArray(prevValue.value) ? iter(prevValue.value, depth + 1) : prevValue.value}`,
+          `${commonAddedPrefix}${key}: ${_.isArray(value) ? iter(value, depth + 1) : value}`,
+        ];
+      }
+
+      return `${commonPrefix}${key}: ${_.isArray(value) ? iter(value, depth + 1) : value}`;
+    }).join('\n')}\n${depthIndent}}`;
+  };
+
+  return iter(diffs);
 };
 
-export default getStylishFormattedString
+export default getStylishFormattedString;
