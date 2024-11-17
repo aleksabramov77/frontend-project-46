@@ -20,8 +20,11 @@ describe('parseFile', () => {
   });
 
   test('Unknown file extension', () => {
-    const pathToFile1 = path.resolve(__dirname, '..', '__fixtures__', 'file1.txt');
+    const wrongExt = '.txt';
 
-    expect(parseFile(pathToFile1)).rejects.toThrow();
+    const pathToFile1 = path.resolve(__dirname, '..', '__fixtures__', `file1.${wrongExt}`);
+
+    expect(() => parseFile(pathToFile1))
+      .toThrow(`Unknown file extension: '${wrongExt}'`);
   });
 });
