@@ -28,5 +28,8 @@ jobs:
           CODECLIMATE_REPO_TOKEN: ${{ secrets.CODECLIMATE_REPO_TOKEN }}
         run: |
           npx @codeclimate/test-reporter < coverage/lcov.info
-    
+        with:
+          coverageCommand: make test-coverage
+          debug: true
+
 
