@@ -12,7 +12,7 @@
   "bin": {
     "gendiff": "bin/gendiff.js"
   },
-  "main": "src/genDiffs.js",
+  "main": "src/index.js",
   "dependencies": {
     "commander": "^12.1.0",
     "js-yaml": "^4.1.0",
