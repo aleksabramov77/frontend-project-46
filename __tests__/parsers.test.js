@@ -9,7 +9,7 @@ const __dirname = path.dirname(__filename);
 
 
 describe("parseFile", () => {
-    test.each([ "json", "yaml"])("%s", (fileExt) => {
+    test.each([ "json", "yaml", "yml"])("%s", (fileExt) => {
         const pathToFile1 = path.resolve(__dirname, "..", "__fixtures__", `file1.${fileExt}`)
         const pathToFile2 = path.resolve(__dirname, "..", "__fixtures__", `file2.${fileExt}`)
 
