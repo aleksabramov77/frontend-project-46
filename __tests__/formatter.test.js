@@ -1,12 +1,14 @@
-import {describe} from "@jest/globals";
-import formatter from "../src/formatter.js";
-import {expectedDiff, expectedStylishFormat} from "../__fixtures__/expects.js";
+import getFormattedString from "../src/formatters/index.js";
+import {expectedDiff, expectedPlainFormat, expectedStylishFormat} from "../__fixtures__/expects.js";
 
 
-describe("genDiff", () => {
-    test.each([ "stylish" ])("%s", (format) => {
-        const formattedDiff = formatter(expectedDiff, format)
+describe("formatter", () => {
+    test.each([
+        ["stylish", expectedStylishFormat ],
+        ["plain", expectedPlainFormat ]
+    ])("%s", (format, expected) => {
+        const formattedDiff = getFormattedString(expectedDiff, format)
 
-        expect(formattedDiff).toBe(expectedStylishFormat);
+        expect(formattedDiff).toBe(expected);
     });
 });

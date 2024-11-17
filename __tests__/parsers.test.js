@@ -1,6 +1,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import {describe} from "@jest/globals";
+import {describe, test, expect} from "@jest/globals";
 import {parseFile} from "../src/parsers.js";
 import {expectedObject1, expectedObject2} from "../__fixtures__/expects.js";
 

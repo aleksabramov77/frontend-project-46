@@ -31,8 +31,8 @@ export const expectedDiff = [
             { state: "added", key: "follow", value: false },
             { state: "unchanged", key: "setting1", value: "Value 1" },
             { state: "removed", key: "setting2", value: 200 },
-            { state: "removed", key: "setting3", value: true },
-            { state: "added", key: "setting3", value: null },
+            { state: "changedRemoved", key: "setting3", value: true },
+            { state: "changedAdded", key: "setting3", value: null },
             { state: "added", key: "setting4", value: "blah blah" },
             {
                 state: "added",
@@ -47,8 +47,8 @@ export const expectedDiff = [
                         state: "unchanged",
                         key: "doge",
                         value: [
-                            { state: "removed", key: "wow", value: "" },
-                            { state: "added", key: "wow", value: "so much" },
+                            { state: "changedRemoved", key: "wow", value: "" },
+                            { state: "changedAdded", key: "wow", value: "so much" },
                         ],
                     },
                     { state: "unchanged", key: "key", value: "value" },
@@ -61,15 +61,15 @@ export const expectedDiff = [
         state: "unchanged",
         key: "group1",
         value: [
-            { state: "removed", key: "baz", value: "bas" },
-            { state: "added", key: "baz", value: "bars" },
+            { state: "changedRemoved", key: "baz", value: "bas" },
+            { state: "changedAdded", key: "baz", value: "bars" },
             { state: "unchanged", key: "foo", value: "bar" },
             {
-                state: "removed",
+                state: "changedRemoved",
                 key: "nest",
                 value: [{ state: "unchanged", key: "key", value: "value" }],
             },
-            { state: "added", key: "nest", value: "str" },
+            { state: "changedAdded", key: "nest", value: "str" },
         ],
     },
     {
@@ -91,7 +91,9 @@ export const expectedDiff = [
                     {
                         state: "unchanged",
                         key: "id",
-                        value: [{ state: "unchanged", key: "number", value: 45 }],
+                        value: [
+                            { state: "unchanged", key: "number", value: 45 }
+                        ],
                     },
                 ],
             },
@@ -144,3 +146,15 @@ export const expectedStylishFormat = `{
         fee: 100500
     }
 }`
+
+export const expectedPlainFormat = `Property 'common.follow' was added with value: false
+Property 'common.setting2' was removed
+Property 'common.setting3' was updated. From true to null
+Property 'common.setting4' was added with value: 'blah blah'
+Property 'common.setting5' was added with value: [complex value]
+Property 'common.setting6.doge.wow' was updated. From '' to 'so much'
+Property 'common.setting6.ops' was added with value: 'vops'
+Property 'group1.baz' was updated. From 'bas' to 'bars'
+Property 'group1.nest' was updated. From [complex value] to 'str'
+Property 'group2' was removed
+Property 'group3' was added with value: [complex value]`
