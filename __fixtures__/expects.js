@@ -172,171 +172,171 @@ Property 'group1.nest' was updated. From [complex value] to 'str'
 Property 'group2' was removed
 Property 'group3' was added with value: [complex value]`;
 
-export const expectedJsonFormattedString = `[
+export const expectedJsonFormattedString = [
   {
-    "type": "unchanged",
-    "key": "common",
-    "value": [
+    type: 'unchanged',
+    key: 'common',
+    value: [
       {
-        "type": "added",
-        "key": "follow",
-        "value": false
+        type: 'added',
+        key: 'follow',
+        value: false,
       },
       {
-        "type": "unchanged",
-        "key": "setting1",
-        "value": "Value 1"
+        type: 'unchanged',
+        key: 'setting1',
+        value: 'Value 1',
       },
       {
-        "type": "removed",
-        "key": "setting2",
-        "value": 200
+        type: 'removed',
+        key: 'setting2',
+        value: 200,
       },
       {
-        "type": "changed",
-        "key": "setting3",
-        "value": null,
-        "prevValue": {
-          "type": "removed",
-          "key": "setting3",
-          "value": true
-        }
+        type: 'changed',
+        key: 'setting3',
+        value: null,
+        prevValue: {
+          type: 'removed',
+          key: 'setting3',
+          value: true,
+        },
       },
       {
-        "type": "added",
-        "key": "setting4",
-        "value": "blah blah"
+        type: 'added',
+        key: 'setting4',
+        value: 'blah blah',
       },
       {
-        "type": "added",
-        "key": "setting5",
-        "value": [
+        type: 'added',
+        key: 'setting5',
+        value: [
           {
-            "type": "unchanged",
-            "key": "key5",
-            "value": "value5"
-          }
-        ]
+            type: 'unchanged',
+            key: 'key5',
+            value: 'value5',
+          },
+        ],
       },
       {
-        "type": "unchanged",
-        "key": "setting6",
-        "value": [
+        type: 'unchanged',
+        key: 'setting6',
+        value: [
           {
-            "type": "unchanged",
-            "key": "doge",
-            "value": [
+            type: 'unchanged',
+            key: 'doge',
+            value: [
               {
-                "type": "changed",
-                "key": "wow",
-                "value": "so much",
-                "prevValue": {
-                  "type": "removed",
-                  "key": "wow",
-                  "value": ""
-                }
-              }
-            ]
+                type: 'changed',
+                key: 'wow',
+                value: 'so much',
+                prevValue: {
+                  type: 'removed',
+                  key: 'wow',
+                  value: '',
+                },
+              },
+            ],
           },
           {
-            "type": "unchanged",
-            "key": "key",
-            "value": "value"
+            type: 'unchanged',
+            key: 'key',
+            value: 'value',
           },
           {
-            "type": "added",
-            "key": "ops",
-            "value": "vops"
-          }
-        ]
-      }
-    ]
+            type: 'added',
+            key: 'ops',
+            value: 'vops',
+          },
+        ],
+      },
+    ],
   },
   {
-    "type": "unchanged",
-    "key": "group1",
-    "value": [
+    type: 'unchanged',
+    key: 'group1',
+    value: [
       {
-        "type": "changed",
-        "key": "baz",
-        "value": "bars",
-        "prevValue": {
-          "type": "removed",
-          "key": "baz",
-          "value": "bas"
-        }
+        type: 'changed',
+        key: 'baz',
+        value: 'bars',
+        prevValue: {
+          type: 'removed',
+          key: 'baz',
+          value: 'bas',
+        },
       },
       {
-        "type": "unchanged",
-        "key": "foo",
-        "value": "bar"
+        type: 'unchanged',
+        key: 'foo',
+        value: 'bar',
       },
       {
-        "type": "changed",
-        "key": "nest",
-        "value": "str",
-        "prevValue": {
-          "type": "removed",
-          "key": "nest",
-          "value": [
+        type: 'changed',
+        key: 'nest',
+        value: 'str',
+        prevValue: {
+          type: 'removed',
+          key: 'nest',
+          value: [
             {
-              "type": "unchanged",
-              "key": "key",
-              "value": "value"
-            }
-          ]
-        }
-      }
-    ]
+              type: 'unchanged',
+              key: 'key',
+              value: 'value',
+            },
+          ],
+        },
+      },
+    ],
   },
   {
-    "type": "removed",
-    "key": "group2",
-    "value": [
+    type: 'removed',
+    key: 'group2',
+    value: [
       {
-        "type": "unchanged",
-        "key": "abc",
-        "value": 12345
+        type: 'unchanged',
+        key: 'abc',
+        value: 12345,
       },
       {
-        "type": "unchanged",
-        "key": "deep",
-        "value": [
+        type: 'unchanged',
+        key: 'deep',
+        value: [
           {
-            "type": "unchanged",
-            "key": "id",
-            "value": 45
-          }
-        ]
-      }
-    ]
+            type: 'unchanged',
+            key: 'id',
+            value: 45,
+          },
+        ],
+      },
+    ],
   },
   {
-    "type": "added",
-    "key": "group3",
-    "value": [
+    type: 'added',
+    key: 'group3',
+    value: [
       {
-        "type": "unchanged",
-        "key": "deep",
-        "value": [
+        type: 'unchanged',
+        key: 'deep',
+        value: [
           {
-            "type": "unchanged",
-            "key": "id",
-            "value": [
+            type: 'unchanged',
+            key: 'id',
+            value: [
               {
-                "type": "unchanged",
-                "key": "number",
-                "value": 45
-              }
-            ]
-          }
-        ]
+                type: 'unchanged',
+                key: 'number',
+                value: 45,
+              },
+            ],
+          },
+        ],
       },
       {
-        "type": "unchanged",
-        "key": "fee",
-        "value": 100500
-      }
-    ]
-  }
-]`;
+        type: 'unchanged',
+        key: 'fee',
+        value: 100500,
+      },
+    ],
+  },
+];

@@ -1,5 +1,5 @@
 import { describe, test, expect } from '@jest/globals';
-import getFormattedString from '../src/formatters/index.js';
+import getFormatter from '../src/formatters/index.js';
 import {
   expectedDiffs,
   expectedJsonFormattedString,
@@ -14,8 +14,8 @@ describe('formatter', () => {
     ['json', expectedJsonFormattedString],
     ['undefined', expectedStylishFormattedString],
   ])('%s', (format, expected) => {
-    const formattedDiff = getFormattedString(expectedDiffs, format);
+    const formattedDiff = getFormatter(format)(expectedDiffs);
 
-    expect(formattedDiff).toBe(expected);
+    expect(formattedDiff).toEqual(expected);
   });
 });

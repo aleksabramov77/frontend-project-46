@@ -1,28 +1,21 @@
+import _ from 'lodash';
 import getStylishFormattedString from './stylish.js';
 import getPlainFormattedString from './plain.js';
-import getJsonFormattedString from './json.js';
 
-/**
- * @type {import("../types.js")}
- *
- * @param {Diff[]} diffs
- * @param {"stylish" | "plain" | "json"} format
- * @return {string | never}
- */
-const getFormattedString = (diffs, format) => {
+const getFormatter = (format) => {
   if (format === 'stylish') {
-    return getStylishFormattedString(diffs);
+    return getStylishFormattedString;
   }
 
   if (format === 'plain') {
-    return getPlainFormattedString(diffs);
+    return getPlainFormattedString;
   }
 
   if (format === 'json') {
-    return getJsonFormattedString(diffs);
+    return _.identity;
   }
 
-  return getStylishFormattedString(diffs);
+  return getStylishFormattedString;
 };
 
-export default getFormattedString;
+export default getFormatter;
