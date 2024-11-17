@@ -1,9 +1,9 @@
 import {test, expect} from "@jest/globals";
-import genDiff from "../src/genDiff.js";
-import {expectedDiff, expectedObject1, expectedObject2} from "../__fixtures__/expects.js";
+import genDiffs from "../src/genDiffs.js";
+import {expectedDiffs, expectedObject1, expectedObject2} from "../__fixtures__/expects.js";
 
 test("genDiff", () => {
-    const diff = genDiff(expectedObject1, expectedObject2);
+    const diff = genDiffs(expectedObject1, expectedObject2);
 
-    expect(diff).toEqual(expectedDiff);
+    expect(diff).toEqual(expectedDiffs);
 });

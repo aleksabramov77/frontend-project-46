@@ -23,7 +23,7 @@ export const expectedObject2 = {
     group3: { deep: { id: { number: 45 } }, fee: 100500 },
 };
 
-export const expectedDiff = [
+export const expectedDiffs = [
     {
         state: "unchanged",
         key: "common",
@@ -31,8 +31,12 @@ export const expectedDiff = [
             { state: "added", key: "follow", value: false },
             { state: "unchanged", key: "setting1", value: "Value 1" },
             { state: "removed", key: "setting2", value: 200 },
-            { state: "changedRemoved", key: "setting3", value: true },
-            { state: "changedAdded", key: "setting3", value: null },
+            {
+                state: "changed",
+                key: "setting3",
+                value: null,
+                prevValue: { state: "removed", key: "setting3", value: true },
+            },
             { state: "added", key: "setting4", value: "blah blah" },
             {
                 state: "added",
@@ -47,8 +51,12 @@ export const expectedDiff = [
                         state: "unchanged",
                         key: "doge",
                         value: [
-                            { state: "changedRemoved", key: "wow", value: "" },
-                            { state: "changedAdded", key: "wow", value: "so much" },
+                            {
+                                state: "changed",
+                                key: "wow",
+                                value: "so much",
+                                prevValue: { state: "removed", key: "wow", value: "" },
+                            },
                         ],
                     },
                     { state: "unchanged", key: "key", value: "value" },
@@ -61,15 +69,23 @@ export const expectedDiff = [
         state: "unchanged",
         key: "group1",
         value: [
-            { state: "changedRemoved", key: "baz", value: "bas" },
-            { state: "changedAdded", key: "baz", value: "bars" },
+            {
+                state: "changed",
+                key: "baz",
+                value: "bars",
+                prevValue: { state: "removed", key: "baz", value: "bas" },
+            },
             { state: "unchanged", key: "foo", value: "bar" },
             {
-                state: "changedRemoved",
+                state: "changed",
                 key: "nest",
-                value: [{ state: "unchanged", key: "key", value: "value" }],
+                value: "str",
+                prevValue: {
+                    state: "removed",
+                    key: "nest",
+                    value: [{ state: "unchanged", key: "key", value: "value" }],
+                },
             },
-            { state: "changedAdded", key: "nest", value: "str" },
         ],
     },
     {
@@ -91,9 +107,7 @@ export const expectedDiff = [
                     {
                         state: "unchanged",
                         key: "id",
-                        value: [
-                            { state: "unchanged", key: "number", value: 45 }
-                        ],
+                        value: [{ state: "unchanged", key: "number", value: 45 }],
                     },
                 ],
             },

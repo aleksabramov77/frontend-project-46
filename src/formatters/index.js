@@ -2,19 +2,19 @@ import getStylishFormattedString from "./stylish.js";
 import getPlainFormattedString from "./plain.js";
 
 /**
- * @type {import("../types.js").Data}
+ * @type {import("../types.js").Diff}
  *
- * @param {Data} data
+ * @param {Diff[]} diffs
  * @param {"stylish" | string} format
  * @return {string}
  */
-const getFormattedString = (data, format) => {
+const getFormattedString = (diffs, format) => {
     if(format === "stylish") {
-        return getStylishFormattedString(data)
+        return getStylishFormattedString(diffs)
     }
 
     if(format === "plain") {
-        return getPlainFormattedString(data)
+        return getPlainFormattedString(diffs)
     }
 
     throw new Error(`Unknown format: '${format}'`)

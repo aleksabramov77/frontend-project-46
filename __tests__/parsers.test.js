@@ -1,8 +1,8 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import {describe, test, expect} from "@jest/globals";
-import {parseFile} from "../src/parsers.js";
-import {expectedObject1, expectedObject2} from "../__fixtures__/expects.js";
+import { describe, test, expect } from "@jest/globals";
+import parseFile from "../src/parsers.js";
+import { expectedObject1, expectedObject2 } from "../__fixtures__/expects.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
