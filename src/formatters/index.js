@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import getStylishFormattedString from './stylish.js';
 import getPlainFormattedString from './plain.js';
 
@@ -12,7 +11,7 @@ const getFormatter = (format) => {
   }
 
   if (format === 'json') {
-    return _.identity;
+    return JSON.stringify;
   }
 
   return getStylishFormattedString;
